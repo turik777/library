@@ -1,3 +1,5 @@
+document.body.onload = displayBooks;
+
 const myLibrary = [
     {
         title: "The Hobbit",
@@ -28,4 +30,26 @@ function Book(title, author, pages, read) {
 
 function AddBookToLibrary() {
     myLibrary.push(new Book(userTitle, userAuthor, userPages, userRead));
+}
+
+function displayBooks() {
+    myLibrary.forEach(book => {
+        const table = document.querySelector("table");
+        const tbody = document.createElement("tbody");
+        const title = document.createElement("td");
+        const author = document.createElement("td");
+        const pages = document.createElement("td");
+        const read = document.createElement("td");
+
+        title.textContent = book.title;
+        author.textContent = book.author;
+        pages.textContent = book.pages;
+        read.textContent = book.read ? "read" : "not read";
+        
+        table.appendChild(tbody);
+        tbody.appendChild(title);
+        tbody.appendChild(author);
+        tbody.appendChild(pages);
+        tbody.appendChild(read);
+    });
 }
