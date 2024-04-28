@@ -1,4 +1,23 @@
-const myLibrary = [];
+const myLibrary = [
+    {
+        title: "The Hobbit",
+        author: "J.R.R. Tolkien",
+        pages: 295,
+        read: false
+    },
+    {
+        title: "Uzumaki",
+        author: "Junji Ito",
+        pages: 656,
+        read: true
+    },
+    {
+        title: "House of Leaves",
+        author: "Mark Z. Danielewski",
+        pages: 736,
+        read: false
+    }
+];
 
 function Book(title, author, pages, read) {
     this.title = title;
