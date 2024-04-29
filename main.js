@@ -33,6 +33,7 @@ function AddBookToLibrary() {
 }
 
 function displayBooks() {
+    let number = 1;
     myLibrary.forEach(book => {
         const table = document.querySelector("table");
         const tbody = document.createElement("tbody");
@@ -40,17 +41,33 @@ function displayBooks() {
         const author = document.createElement("td");
         const pages = document.createElement("td");
         const read = document.createElement("td");
-
+        const remove = document.createElement("button");
+        
         title.textContent = book.title;
         author.textContent = book.author;
         pages.textContent = book.pages;
         read.textContent = book.read ? "read" : "not read";
+        remove.textContent = "Remove";
         
         table.appendChild(tbody);
         tbody.appendChild(title);
         tbody.appendChild(author);
         tbody.appendChild(pages);
         tbody.appendChild(read);
+
+        tbody.appendChild(remove);
+        remove.setAttribute("id", `${number}-book`);
+        remove.addEventListener("click", () => {
+            let bookNumber = parseInt(remove.id);
+            myLibrary.splice(bookNumber - 1, 1);
+            console.log(remove);
+
+            const tbody = document.querySelectorAll("tbody");
+            tbody.forEach(book => book.remove());
+            displayBooks();
+        })
+
+        number++;
     });
 }
 
