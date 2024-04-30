@@ -41,12 +41,13 @@ function displayBooks() {
         const author = document.createElement("td");
         const pages = document.createElement("td");
         const read = document.createElement("td");
+        const readStatus = document.createElement("button");
         const remove = document.createElement("button");
         
         title.textContent = book.title;
         author.textContent = book.author;
         pages.textContent = book.pages;
-        read.textContent = book.read ? "read" : "not read";
+        readStatus.textContent = book.read ? "read" : "not read";
         remove.textContent = "Remove";
         
         table.appendChild(tbody);
@@ -54,8 +55,14 @@ function displayBooks() {
         tbody.appendChild(author);
         tbody.appendChild(pages);
         tbody.appendChild(read);
-
+        read.appendChild(readStatus);
         tbody.appendChild(remove);
+
+        readStatus.addEventListener("click", () => {
+            readStatus.textContent === "not read" ? readStatus.textContent = "read" 
+                                                  : readStatus.textContent = "not read";
+        })
+
         remove.setAttribute("id", `${number}-book`);
         remove.addEventListener("click", () => {
             let bookNumber = parseInt(remove.id);
