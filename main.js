@@ -59,8 +59,13 @@ function displayBooks() {
         tbody.appendChild(remove);
 
         readStatus.addEventListener("click", () => {
-            readStatus.textContent === "not read" ? readStatus.textContent = "read" 
-                                                  : readStatus.textContent = "not read";
+            if (readStatus.textContent === "not read") {
+                readStatus.textContent = "read";
+                book.read = true;
+            } else {
+                readStatus.textContent = "not read"
+                book.read = false;
+            }
         })
 
         remove.setAttribute("id", `${number}-book`);
